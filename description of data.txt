@@ -1,0 +1,523 @@
+Háztartások strukturája, jellemzői:
+0. Település
+1. Háztartások száma - konzisztencia a településenként lakott lakások számával?
+2. Háztartás mérete
+3. Háztartásbeli személyekre való megkötések:
+    - korösszetétel, foglalkoztatottak száma, munkanélküliek száma, ellátásban részesülő inaktív személyek száma, eltartottak száma
+
+Ágensek strukturája, jellemzői:
+- Nem: Férfi/Nő
+- Életkor
+- Iskolai végzettség: 
+    - Általános iskola 8. évfolyamnál alacsonyabb (amennyiben alacsonyabb az életkor 12-nél? Konzisztencia iskolába járókkal és népességgel?)
+    - Általános iskola 8. évfolyam
+    - Középfokú iskola érettségi nélkül, szakmai oklevéllel
+    - Érettségi
+    - Egyetem, főiskola stb. oklevéllel
+- Házassági állapot:
+    - Nőtlen, hajadon
+    - Házas
+    - Özvegy
+    - Elvált
+- Foglalkoztatottsági állapot (flat, részletes de nem kapcsolt jellemzők és hierarchikus de kapcsolt jellemzők alapján):
+    - Foglalkoztatott
+    - Munkanélküli
+    - Ellátásban részesülő inaktív
+    - Eltartott
+- Iskolába járás szintje (nem és kor függően)
+    - Nem jár iskolába
+    - Alapfokú képzésre jár
+    - Érettségit nem adó szakmai képzésben vesz részt
+    - Érettségit adó általános képzésben vesz részt
+    - Érettségit adó szakmai képzésben vesz részt
+    - Érettségire épülő középfokú szakképzésben vesz részt
+    - Felsőoktatási szakképzésben vesz részt
+    - Felsőfokú alapképzésben (BA/BSc) vesz részt
+    - Felsőfokú mesterképzésben (MA/MSc), osztatlan képzésben vesz részt
+    - Szakirányú továbbképzésben vesz részt
+    - Doktori (PhD-, DLA-) képzésben vesz részt
+- Foglalkoztatási főcsoport (nem, kor, és végzettség függően):
+    - Nem foglalkoztatott
+    - Gazdasági, igazgatási, érdekképviseleti vezetők, törvényhozók
+    - Felsőfokú képzettség önálló alkalmazását igénylő foglalkozások
+    - Egyéb, felsőfokú vagy középfokú képzettséget igénylő foglalkozások
+    - Irodai és ügyviteli (ügyfélkapcsolati) foglalkozások
+    - Kereskedelmi és szolgáltatási foglalkozások
+    - Mezőgazdasági és erdőgazdálkodási foglalkozások
+    - Ipari és építőipari foglalkozások
+    - Gépkezelők, összeszerelők, járművezetők
+    - Szakképzettséget nem igénylő (egyszerű) foglalkozások
+    - Fegyveres szervek foglalkozásai
+- Foglalkoztatottak ingázása, foglalkoztatás helye, régiója (nem, kor, és végzettség függően):
+    - Nem foglalkoztatott
+    - Lakóhelyén foglalkoztatott
+    - Lakóhely településén foglalkoztatott
+    - Más magyarországi településen foglalkoztatott
+        - Budapest
+        - Pest vármegye
+        - Fejér vármegye
+        - Komárom-Esztergom vármegye
+        - Veszprém vármegye
+        - Győr-Moson-Sopron vármegye
+        - Vas vármegye
+        - Zala vármegye
+        - Baranya vármegye
+        - Somogy vármegye
+        - Tolna vármegye
+        - Borsod-Abaúj-Zemplén vármegye
+        - Heves vármegye
+        - Nógrád vármegye
+        - Hajdú-Bihar vármegye
+        - Jász-Nagykun-Szolnok vármegye
+        - Szabolcs-Szatmár-Bereg vármegye
+        - Bács-Kiskun vármegye
+        - Békés vármegye
+        - Csongrád-Csanád vármegye
+        - Ismeretlen (ez melyik felsőbb kategóriából jön?)
+    - Külföldön foglalkoztatott
+        - Külföld
+    - Változó településen foglalkoztatott
+- Foglalkoztatottak nemzetgazdasági ágazat szerint (nem, kor, és végzettség függően)
+    - Nem foglalkoztatott
+    - Mezőgazdaság, erdőgazdálkodás, halászat
+    - Bányászat, kőfejtés
+    - Feldolgozóipar
+    - Villamosenergia-, gáz-, gőzellátás, légkondicionálás
+    - Vízellátás; szennyvíz gyűjtése, kezelése, hulladékgazdálkodás, szennyeződésmentesítés
+    - Építőipar
+    - Kereskedelem, gépjárműjavítás
+    - Szállítás, raktározás
+    - Szálláshely-szolgáltatás, vendéglátás
+    - Információ, kommunikáció
+    - Pénzügyi, biztosítási tevékenység
+    - Ingatlanügyletek
+    - Szakmai, tudományos, műszaki tevékenység
+    - Adminisztratív és szolgáltatást támogató tevékenység
+    - Közigazgatás, védelem; kötelező társadalombiztosítás
+    - Oktatás
+    - Humán-egészségügyi, szociális ellátás
+    - Művészet, szórakoztatás, szabad idő
+    - Egyéb szolgáltatás
+    - Háztartás munkaadói tevékenysége; termék előállítása, szolgáltatás végzése saját fogyasztásra
+    - Területen kívüli szervezet
+
+
+============ FLAT FILE
+flat_A háztartások adatai településenként.xlsx
+
+This file describes the composition of households in Hungary. There is a data point for each category for each city and town in Hungary. Carefully  consider that the categories are not mutually exclusive.
+
+Categories:
+Egyszemélyes háztartás
+Kétszemélyes háztartás
+Háromszemélyes háztartás
+Négyszemélyes háztartás
+Ötszemélyes háztartás
+Hat vagy többszemélyes háztartás
+Egy családból álló háztartás
+Házaspár és élettársi kapcsolat
+Egy szülő gyermekkel
+Több családból álló háztartás
+Két családból álló háztartás
+Három és több családból álló háztartás
+Nem családháztartás
+Egyszemélyes háztartás
+Egyéb összetételű háztartás
+Nincs 15 évesnél fiatalabb személy a háztartásban
+1 személy 15 évesnél fiatalabb a háztartásban
+2 személy 15 évesnél fiatalabb a háztartásban
+3 vagy több személy 15 évesnél fiatalabb a háztartásban
+Nincs 30 évesnél fiatalabb személy a háztartásban
+1 személy 30 évesnél fiatalabb a háztartásban
+2 személy 30 évesnél fiatalabb a háztartásban
+3 vagy több személy 30 évesnél fiatalabb a háztartásban
+Nincs 30–64 éves személy a háztartásban
+1 személy 30–64 éves a háztartásban
+2 személy 30–64 éves a háztartásban
+3 vagy több személy 30–64 éves a háztartásban
+Nincs 65 éves és idősebb személy a háztartásban
+1 személy 65 éves és idősebb a háztartásban
+2 személy 65 éves és idősebb a háztartásban
+3 vagy több személy 65 éves és idősebb a háztartásban
+Csak 30 évesnél fiatalabb személy van a háztartásban
+Csak 30–64 éves személy van a háztartásban
+Csak 65 éves és idősebb személy van a háztartásban
+30 évesnél fiatalabb és 30–64 éves személyek vannak a háztartásban
+30 évesnél fiatalabb és 65 éves és idősebb személyek vannak a háztartásban
+30–64 éves és 65 éves és idősebb személyek vannak a háztartásban
+30 évesnél fiatalabb, 30–64 éves és 65 éves és idősebb személyek vannak a háztartásban
+Nincs foglalkoztatott személy a háztartásban
+1 foglalkoztatott személy van a háztartásban
+2 foglalkoztatott személy van a háztartásban
+3 vagy több foglalkoztatott szeméy van a háztartásban
+Nincs munkanélküli személy a háztartásban
+1 munkanélküli személy van a háztartásban
+2 munkanélküli személy van a háztartásban
+3 vagy több munkanélküli személy van a háztartásban
+Nincs ellátásban részesülő inaktív személy a háztartásban
+1 ellátásban részesülő inaktív személy van a háztartásban
+2 ellátásban részesülő inaktív személy van a háztartásban
+3 vagy több ellátásban részesülő inaktív személy van a háztartásban
+Nincs eltartott személy a háztartásban
+1 eltartott személy van a háztartásban
+2 eltartott személy van a háztartásban
+3 vagy több eltartott személy van a háztartásban
+============ END FILE 
+
+============ FLAT FILE
+flat_A lakások legfontosabb jellemzői településenként.xlsx
+
+This file describes the number of housing units and their size in Hungary. There is a data point for each category for each city and town in Hungary. Note that the number of occupied housing units may be less than the sum of housing units in of different sizes, because some housing units are not occupied.
+
+Categories:
+Lakott lakás
+1 szoba
+2 szoba
+3 szoba
+4 vagy több szoba
+
+============ END FILE
+
+============ FLAT FILE
+flat_A népesség adatai településenként.xlsx
+
+This file describes the population of Hungary, depending on their age, gender, education, and other factors. There is a data point for each category for each city and town in Hungary. Carefully consider that the categories are not mutually exclusive.
+
+Categories:
+Férfi
+Nő
+10 évesnél fiatalabb
+10–19 éves
+20–29 éves
+30–39 éves
+40–49 éves
+50–59 éves
+60–69 éves
+70–79 éves
+80–89 éves
+90 éves és idősebb
+15 évesnél fiatalabb férfi
+15–64 éves férfi
+65 éves és idősebb férfi
+15 évesnél fiatalabb nő
+15–64 éves nő
+65 éves és idősebb nő
+Nőtlen, hajadon
+Házas
+Özvegy
+Elvált
+15 évesnél fiatalabb személy
+15 éves és idősebb nő 0 élve született gyermekkel
+15 éves és idősebb nő 1 élve született gyermekkel
+15 éves és idősebb nő 2 élve született gyermekkel
+15 éves és idősebb nő 3 élve született gyermekkel
+15 éves és idősebb nő 4 élve született gyermekkel
+15 éves és idősebb nő 5 vagy több élve született gyermekkel
+15 évesnél fiatalabb nő
+Férfi
+Magyar állampolgár
+Általános iskola 8. évfolyamnál alacsonyabb
+Általános iskola 8. évfolyam
+Középfokú iskola érettségi nélkül, szakmai oklevéllel
+Érettségi
+Egyetem, főiskola stb. oklevéllel
+7 évesnél fiatalabb személy
+Foglalkoztatott
+Munkanélküli
+Ellátásban részesülő inaktív
+Eltartott
+15 évesnél fiatalabb személy
+
+============ END FILE
+
+
+============ HIERARCHICAL FILE
+hier_foglalkoztatott népesség foglalkozási főcsoport.xlsx
+
+This file describes the employment status and the occupation of the population in Hungary, depending on their age, education, and other factors.
+
+For each "Vármegye", grouped results for "Főváros", "Megyei jogú város(ok)", "Egyéb város(ok)", "Község(ek)" giving information about the number of people in each lowest-level category.
+
+Top level categories:
+Férfi
+Nő
+----------------------------------------
+Sub-categories:
+15–19 éves
+20–24 éves
+25–29 éves
+30–34 éves
+35–39 éves
+40–44 éves
+45–49 éves
+50–54 éves
+55–59 éves
+60–64 éves
+65–69 éves
+70 éves és idősebb
+----------------------------------------
+Sub-categories:
+Általános iskola 8. évfolyamnál alacsonyabb
+Általános iskola 8. évfolyam
+Középfokú iskola érettségi nélkül, szakmai oklevéllel
+Érettségi
+Egyetem, főiskola stb. oklevéllel
+----------------------------------------
+Sub-categories (occupation):
+Gazdasági, igazgatási, érdekképviseleti vezetők, törvényhozók
+Felsőfokú képzettség önálló alkalmazását igénylő foglalkozások
+Egyéb, felsőfokú vagy középfokú képzettséget igénylő foglalkozások
+Irodai és ügyviteli (ügyfélkapcsolati) foglalkozások
+Kereskedelmi és szolgáltatási foglalkozások
+Mezőgazdasági és erdőgazdálkodási foglalkozások
+Ipari és építőipari foglalkozások
+Gépkezelők, összeszerelők, járművezetők
+Szakképzettséget nem igénylő (egyszerű) foglalkozások
+Fegyveres szervek foglalkozásai
+
+END FILE ============
+
+============ HIERARCHICAL FILE
+hier_Egészségi állapot vármegyénként, településtípusonként.xlsx
+
+This file describes the health status of the population in Hungary, depending on their age, education, and other factors.
+
+For each "Vármegye", grouped results for "Főváros", "Megyei jogú város(ok)", "Egyéb város(ok)", "Község(ek)" giving information about the number of people in each lowest-level category.
+
+Top level categories:
+Férfi
+Nő
+5–14 éves
+15–24 éves
+25–34 éves
+35–44 éves
+45–54 éves
+55–64 éves
+65–74 éves
+75–84 éves
+85 éves és idősebb
+Általános iskola 8. évfolyamnál alacsonyabb
+Általános iskola 8. évfolyam
+Középfokú iskola érettségi nélkül, szakmai oklevéllel
+Érettségi
+Egyetem, főiskola stb. oklevéllel
+15 évesnél fiatalabb személy
+Foglalkoztatott
+Munkanélküli
+Ellátásban részesülő inaktív
+Eltartott
+----------------------------------------
+Sub-categories:
+Fogyatékossága van vagy súlyosan korlátozott
+Nincs fogyatékossága és nem súlyosan korlátozott
+Nem válaszolt a fogyatékossági és a korlátozottsági kérdésekre
+Van tartós betegsége
+Nincs tartós betegsége
+Nem válaszolt a tartós betegségre vonatkozó kérdésre
+Nem korlátozott
+Mérsékelten korlátozott
+Súlyosan korlátozott
+Nem válaszolt a korlátozottsági kérdésekre
+
+END FILE ============
+
+============ HIERARCHICAL FILE
+hier_foglalkoztatott_ingázás.xlsx
+
+This file describes how many people living in various regions of Hungary commute to work, depending on their age, education, and other factors.
+
+For each "Vármegye", grouped results for "Főváros", "Megyei jogú város(ok)", "Egyéb város(ok)", "Község(ek)" giving commuting information about the number of people living in those regions.
+
+Top level categories:
+Férfi
+Nő
+----------------------------------------
+Sub-categories:
+15–19 éves
+20–24 éves
+25–29 éves
+30–34 éves
+35–39 éves
+40–44 éves
+45–49 éves
+50–54 éves
+55–59 éves
+60–64 éves
+65–69 éves
+70 éves és idősebb
+----------------------------------------
+Sub-categories:
+Általános iskola 8. évfolyamnál alacsonyabb
+Általános iskola 8. évfolyam
+Középfokú iskola érettségi nélkül, szakmai oklevéllel
+Érettségi
+Egyetem, főiskola stb. oklevéllel
+----------------------------------------
+Sub-categories (region of employment):
+Budapest
+Pest vármegye
+Fejér vármegye
+Komárom-Esztergom vármegye
+Veszprém vármegye
+Győr-Moson-Sopron vármegye
+Vas vármegye
+Zala vármegye
+Baranya vármegye
+Somogy vármegye
+Tolna vármegye
+Borsod-Abaúj-Zemplén vármegye
+Heves vármegye
+Nógrád vármegye
+Hajdú-Bihar vármegye
+Jász-Nagykun-Szolnok vármegye
+Szabolcs-Szatmár-Bereg vármegye
+Bács-Kiskun vármegye
+Békés vármegye
+Csongrád-Csanád vármegye
+Külföld
+Ismeretlen
+----------------------------------------
+Sub-categories (local or non-local employment):
+Lakóhelyén foglalkoztatott
+Lakóhely településén foglalkoztatott
+Más magyarországi településen foglalkoztatott
+Külföldön foglalkoztatott
+Változó településen foglalkoztatott
+
+END FILE ============
+
+============ HIERARCHICAL FILE
+hier_foglalkoztatott_nemzetgazdasági\ ágazat.xlsx
+
+This file describes the occupation subarea of the population in Hungary, depending on their age, education, where they live..
+
+For each "Vármegye", grouped results for "Főváros", "Megyei jogú város(ok)", "Egyéb város(ok)", "Község(ek)" giving information about the number of people in each lowest-level category.
+
+Top level categories:
+Férfi
+Nő
+----------------------------------------
+Sub-categories:
+15–19 éves
+20–24 éves
+25–29 éves
+30–34 éves
+35–39 éves
+40–44 éves
+45–49 éves
+50–54 éves
+55–59 éves
+60–64 éves
+65–69 éves
+70 éves és idősebb
+----------------------------------------
+Sub-categories:
+Általános iskola 8. évfolyamnál alacsonyabb
+Általános iskola 8. évfolyam
+Középfokú iskola érettségi nélkül, szakmai oklevéllel
+Érettségi
+Egyetem, főiskola stb. oklevéllel
+----------------------------------------
+Sub-categories (employment sector):
+Mezőgazdaság, erdőgazdálkodás, halászat
+Bányászat, kőfejtés
+Feldolgozóipar
+Villamosenergia-, gáz-, gőzellátás, légkondicionálás
+Vízellátás; szennyvíz gyűjtése, kezelése, hulladékgazdálkodás, szennyeződésmentesítés
+Építőipar
+Kereskedelem, gépjárműjavítás
+Szállítás, raktározás
+Szálláshely-szolgáltatás, vendéglátás
+Információ, kommunikáció
+Pénzügyi, biztosítási tevékenység
+Ingatlanügyletek
+Szakmai, tudományos, műszaki tevékenység
+Adminisztratív és szolgáltatást támogató tevékenység
+Közigazgatás, védelem; kötelező társadalombiztosítás
+Oktatás
+Humán-egészségügyi, szociális ellátás
+Művészet, szórakoztatás, szabad idő
+Egyéb szolgáltatás
+Háztartás munkaadói tevékenysége; termék előállítása, szolgáltatás végzése saját fogyasztásra
+Területen kívüli szervezet
+
+END FILE ============
+
+============ HIERARCHICAL FILE
+hier_gazdasági aktivitás vármegyénként, településtípusonként.xlsx
+
+This file describes the economic activity (employed, unemployed, inactive) of the population in Hungary, depending on their age, education, where they live.
+
+For each "Vármegye", grouped results for "Főváros", "Megyei jogú város(ok)", "Egyéb város(ok)", "Község(ek)" giving information about the number of people in each lowest-level category.
+
+Top level categories:
+Férfi
+Nő
+----------------------------------------
+Sub-categories:
+15 évesnél fiatalabb
+15–19 éves
+20–24 éves
+25–29 éves
+30–34 éves
+35–39 éves
+40–44 éves
+45–49 éves
+50–54 éves
+55–59 éves
+60–64 éves
+65–69 éves
+70–74 éves
+75 éves és idősebb
+----------------------------------------
+Sub-categories:
+Általános iskola 8. évfolyamnál alacsonyabb
+Általános iskola 8. évfolyam
+Középfokú iskola érettségi nélkül, szakmai oklevéllel
+Érettségi
+Egyetem, főiskola stb. oklevéllel
+15 évesnél fiatalabb személy
+----------------------------------------
+Sub-categories:
+Foglalkoztatott
+Munkanélküli
+Ellátásban részesülő inaktív
+Eltartott
+
+
+END FILE ============
+
+============ HIERARCHICAL FILE
+hier_iskolába járó népesség.xlsx
+
+This file describes the education level of the actively studyingpopulation in Hungary, depending on their age, where they live.
+
+For each "Vármegye", grouped results for "Főváros", "Megyei jogú város(ok)", "Egyéb város(ok)", "Község(ek)" giving information about the number of people in each lowest-level category.
+
+Top level categories:
+Férfi
+Nő
+----------------------------------------
+Sub-categories:
+6–9 éves
+10–14 éves
+15–19 éves
+20–24 éves
+25–29 éves
+30–34 éves
+35–39 éves
+40 éves és idősebb
+----------------------------------------
+Sub-categories:
+Alapfokú képzésre jár
+Érettségit nem adó szakmai képzésben vesz részt
+Érettségit adó általános képzésben vesz részt
+Érettségit adó szakmai képzésben vesz részt
+Érettségire épülő középfokú szakképzésben vesz részt
+Felsőoktatási szakképzésben vesz részt
+Felsőfokú alapképzésben (BA/BSc) vesz részt
+Felsőfokú mesterképzésben (MA/MSc), osztatlan képzésben vesz részt
+Szakirányú továbbképzésben vesz részt
+Doktori (PhD-, DLA-) képzésben vesz részt
+
+END FILE ============
